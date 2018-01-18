@@ -89,4 +89,24 @@ table.put_item(
  item = response['item']
  print(item)
  
+ #Delete the table
+  
+table.delete_item(
+        key = {
+                'username': 'mutalip',
+                'lastname': 'kurban',
+         })                         
+                  
+                             
+# #Get item from table after delete
+ 
+ response = table.get_item(
+        key = {
+                'username': 'mutalip',
+                'lastname': 'kurban',
+                        }
+ )
+ 
+ item = response['item']
+ print(item)
  
