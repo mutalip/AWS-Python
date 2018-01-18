@@ -1,13 +1,19 @@
 import boto3
-import botocore
+s3 = boto3.client('s3')
 
-cors_configuration = {
-  'CORSRules' : [{
-    ''Allow
+#Create core configuration
+cors_configuration = { 
+  'CORSRules': [{
+        'AllowedHeaders': ['Authorization'],
+        'AllowedMethods': ['GET', 'PUT'],
+        'AllowedOrigins': ['*'],
+        'ExposeHeaders': ['GET', 'PUT'],
+        'MaxAgeSeconds': 3000
   
   }]
 }
 
-s3 = boto3.client('s3')
+
 
 result = s3.get_bicket_cors(Bucket='mybucket')
+s3.put_bucket_cors(Bucket='my-bucket', CORSConfiguration=cors_configuration)
